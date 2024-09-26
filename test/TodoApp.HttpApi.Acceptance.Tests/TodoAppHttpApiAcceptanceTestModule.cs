@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TodoApp.EntityFrameworkCore;
-using TodoApp.Web;
-using TodoApp.Web.Menus;
 using Volo.Abp.AspNetCore.TestBase;
 using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict;
@@ -17,7 +15,7 @@ namespace TodoApp;
 
 [DependsOn(
     typeof(AbpAspNetCoreTestBaseModule),
-    typeof(TodoAppWebModule),
+    typeof(TodoAppHttpApiModule),
     typeof(TodoAppApplicationTestModule),
     typeof(TodoAppEntityFrameworkCoreTestModule)
 )]
@@ -30,16 +28,16 @@ public class TodoAppHttpApiAcceptanceTestModule : AbpModule
         builder.AddJsonFile("appsettings.secrets.json", true);
         context.Services.ReplaceConfiguration(builder.Build());
 
-        context.Services.PreConfigure<IMvcBuilder>(builder =>
-        {
-            builder.PartManager.ApplicationParts.Add(new CompiledRazorAssemblyPart(typeof(TodoAppWebModule).Assembly));
-        });
+        //context.Services.PreConfigure<IMvcBuilder>(builder =>
+        //{
+        //    builder.PartManager.ApplicationParts.Add(new CompiledRazorAssemblyPart(typeof(TodoAppWebModule).Assembly));
+        //});
 
-        context.Services.GetPreConfigureActions<OpenIddictServerBuilder>().Clear();
-        PreConfigure<AbpOpenIddictAspNetCoreOptions>(options =>
-        {
-            options.AddDevelopmentEncryptionAndSigningCertificate = true;
-        });
+        //context.Services.GetPreConfigureActions<OpenIddictServerBuilder>().Clear();
+        //PreConfigure<AbpOpenIddictAspNetCoreOptions>(options =>
+        //{
+        //    options.AddDevelopmentEncryptionAndSigningCertificate = true;
+        //});
     }
 
     public override void ConfigureServices(ServiceConfigurationContext context)
@@ -61,9 +59,9 @@ public class TodoAppHttpApiAcceptanceTestModule : AbpModule
 
     private static void ConfigureNavigationServices(IServiceCollection services)
     {
-        services.Configure<AbpNavigationOptions>(options =>
-        {
-            options.MenuContributors.Add(new TodoAppMenuContributor());
-        });
+        //services.Configure<AbpNavigationOptions>(options =>
+        //{
+        //    options.MenuContributors.Add(new TodoAppMenuContributor());
+        //});
     }
 }

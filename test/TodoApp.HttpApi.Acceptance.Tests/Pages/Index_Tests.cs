@@ -1,16 +1,16 @@
-﻿using System.Threading.Tasks;
-using Shouldly;
-using Xunit;
+﻿//using System.Threading.Tasks;
+//using Shouldly;
+//using Xunit;
 
-namespace TodoApp.Pages;
+//namespace TodoApp.Pages;
 
-[Collection(TodoAppTestConsts.CollectionDefinitionName)]
-public class Index_Tests : TodoAppHttpApiAcceptanceTestBase
-{
-    [Fact]
-    public async Task Welcome_Page()
-    {
-        var response = await GetResponseAsStringAsync("/");
-        response.ShouldNotBeNull();
-    }
-}
+//[Collection(TodoAppTestConsts.CollectionDefinitionName)]
+//public class Index_Tests : TodoAppHttpApiAcceptanceTestBase
+//{
+//    [Fact]
+//    public async Task Welcome_Page()
+//    {
+//        var response = await GetResponseAsStringAsync("/");
+//        response.ShouldNotBeNull();
+//    }
+//}
