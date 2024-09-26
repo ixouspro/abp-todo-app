@@ -1,0 +1,13 @@
+﻿{
+  "applications": {
+    "TodoApp.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44347",
+      "path": "../../../src/TodoApp.Web/TodoApp.Web.csproj",
+      "kubernetesService": ".*-web$",
+      "execution": {
+        "order": 2
+      }
+    }
+  }
+}
